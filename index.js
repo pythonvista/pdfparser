@@ -8,8 +8,11 @@ app.use("/", express.static("public"));
 app.use(fileUpload());
 app.use(cors())
 
+
+app.get('/cron', (req, res) => {
+    res.json({ msg: 'working'})
+});
 app.post("/extract-text", (req, res) => {
-    console.log(req)
     if (!req.files && !req.files.pdfFile) {
         res.status(400);
         res.end();
